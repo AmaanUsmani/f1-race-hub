@@ -122,7 +122,7 @@
     min-width: 0;
 }
 
-.cal-dot { flex-shrink: 0; }
+.cal-dot  { flex-shrink: 0; }
 .cal-date { flex-shrink: 0; }
 
 /* Badge */
@@ -162,4 +162,56 @@
     background: rgba(251, 146, 60, 0.1);
     color: #fb923c;
     border: 1px solid rgba(251, 146, 60, 0.25);
+}
+
+/* ── Mobile: sidebar → horizontal strip ──────────────────────── */
+@media (max-width: 768px) {
+    #page-season { flex-direction: column; }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 110px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+    }
+    .sidebar-header { padding: 8px 14px; }
+    .sidebar-year   { font-size: 10px; }
+
+    .calendar-list {
+        flex-direction: row;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 6px 10px 8px;
+        gap: 6px;
+    }
+
+    .cal-item {
+        flex-direction: column;
+        min-width: 58px;
+        max-width: 58px;
+        align-items: center;
+        text-align: center;
+        border-left: 3px solid transparent;
+        border-bottom: 2px solid transparent;
+        padding: 6px 4px;
+        border-radius: 6px;
+        gap: 3px;
+        flex-shrink: 0;
+    }
+    .cal-item.is-active {
+        border-left-color: transparent;
+        border-bottom-color: var(--red);
+        background: var(--red-glow);
+    }
+    .cal-item.is-next { border-left-color: transparent; border-bottom-color: var(--red); }
+    .cal-item.is-live { border-left-color: transparent; border-bottom-color: var(--green); background: rgba(74,222,128,0.06); }
+
+    .cal-flag    { font-size: 20px; }
+    .cal-country { font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 56px; }
+    .cal-round   { font-size: 9px; }
+    .cal-meta    { display: none; }
+    .cal-badge-wrap { display: none; }
 }

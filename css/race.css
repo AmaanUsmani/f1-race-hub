@@ -1265,3 +1265,58 @@
     padding: 2px 6px;
     flex-shrink: 0;
 }
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Hero */
+    .race-hero-content  { padding: 16px; gap: 14px; }
+    .race-hero-name     { font-size: 17px; }
+    .race-hero-stats    { gap: 16px; flex-wrap: wrap; }
+    .race-hero-stat-val { font-size: 18px; }
+
+    /* Tabs bar: horizontal scroll */
+    .race-tabs-bar { padding: 8px 12px; overflow-x: auto; }
+    .race-tab-content { gap: 12px; margin-top: 12px; }
+
+    /* Results: hide gap column */
+    .result-table-head { padding: 8px 14px; gap: 10px; }
+    .result-row        { padding: 8px 14px; gap: 10px; }
+    .rth-gap, .result-gap { display: none; }
+    .rth-driver        { padding-left: 0; }
+
+    /* Podium */
+    .podium-wrap            { padding: 16px 10px 0; gap: 4px; }
+    .podium-photo           { width: 60px; height: 60px; }
+    .podium-p1 .podium-photo{ width: 76px; height: 76px; }
+    .podium-name            { font-size: 11px; }
+    .podium-p1 .podium-name { font-size: 13px; }
+    .podium-team            { font-size: 10px; }
+
+    /* Tyre strategy */
+    .ts-row             { padding: 5px 10px; }
+    .ts-legend-and-tabs { flex-wrap: wrap; gap: 8px; margin-left: 0; }
+    .ts-legend-and-tabs .session-sub-tabs { margin-left: 0; }
+    .session-sub-tabs   { margin-left: 0; }
+
+    /* Position chart: horizontal scroll */
+    .pc-wrap     { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px 10px 4px; }
+    .pc-wrap svg { min-width: 560px; }
+    .pc-hint     { display: none; }
+    .pc-row      { padding: 6px 12px; }
+
+    /* Weather */
+    .wx-stats { grid-template-columns: repeat(3, 1fr); }
+    .wx-stat:nth-child(3) { border-right: none; }
+    .wx-stat:nth-child(4), .wx-stat:nth-child(5) { border-top: 1px solid var(--border); }
+}
+@media (max-width: 480px) {
+    .race-hero-name        { font-size: 15px; }
+    .race-hero-content     { padding: 14px; }
+    .race-hero-winner-name { font-size: 14px; }
+    .result-photo          { width: 34px; height: 34px; }
+    .result-team-bar       { height: 34px; }
+    .result-name           { font-size: 12px; }
+    .wx-table-head, .wx-row { grid-template-columns: 50px repeat(3, 1fr); }
+    .wx-row > :nth-child(5), .wx-row > :nth-child(6),
+    .wx-table-head > :nth-child(5), .wx-table-head > :nth-child(6) { display: none; }
+}

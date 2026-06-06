@@ -94,6 +94,12 @@ body.has-wallpaper {
     --border-soft: rgba(42, 42, 42, 0.88);
 }
 
+/* ── Mobile: unlock scrolling ────────────────────────────────── */
+@media (max-width: 768px) {
+    html, body { overflow: auto; height: auto; }
+    .page       { height: auto; min-height: 100vh; }
+}
+
 /* ── Settings modal ───────────────────────────────────────────── */
 #settings-modal {
     position: fixed;

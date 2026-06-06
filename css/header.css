@@ -102,6 +102,19 @@
 }
 .gear-btn:hover { color: var(--text); background: var(--border); }
 
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .header      { padding: 0 14px; gap: 8px; }
+    .logo-year   { display: none; }
+    .header-dev  { display: none; }
+    .nav-btn     { padding: 5px 14px; }
+}
+@media (max-width: 480px) {
+    .logo-text   { font-size: 12px; letter-spacing: 1px; }
+    .logo-badge  { font-size: 11px; padding: 3px 7px; }
+    .nav-btn     { padding: 5px 10px; font-size: 11px; }
+}
+
 /* Status dot states */
 .status-dot {
     width: 7px;

@@ -177,3 +177,16 @@
     justify-content: center;
     border-radius: 50%;
 }
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .standings-row  { padding: 10px 14px; gap: 10px; }
+    .sdriver-photo  { width: 44px; height: 44px; }
+    .steam-bar      { height: 42px; }
+}
+@media (max-width: 480px) {
+    .standings-row  { padding: 8px 12px; gap: 8px; }
+    .sdriver-photo  { width: 36px; height: 36px; }
+    .steam-bar      { height: 34px; }
+    .spoints        { font-size: 14px; }
+}
