@@ -1,5 +1,5 @@
 const CONFIG = {
-    API_BASE:     'http://localhost:5001',   // Local FastF1 Flask backend
+    API_BASE:     'https://f1-race-hub.onrender.com',
     JOLPICA_BASE: 'https://api.jolpi.ca/ergast/f1',
     YEAR: new Date().getFullYear(),
     RACE_WEEKEND_DAYS: 4,
