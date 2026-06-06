@@ -16,4 +16,7 @@ document.body.insertAdjacentHTML('afterbegin', `
             <span id="status-text" style="display:none"></span>
         </div>
     </header>
+    <footer class="site-footer">
+        <span class="footer-dev">by <a class="footer-link" href="https://instagram.com/amaan_1221" target="_blank">@amaan_1221</a></span>
+    </footer>
 `);
