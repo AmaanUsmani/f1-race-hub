@@ -1304,10 +1304,11 @@
     .pc-hint     { display: none; }
     .pc-row      { padding: 6px 12px; }
 
-    /* Weather */
-    .wx-stats { grid-template-columns: repeat(3, 1fr); }
-    .wx-stat:nth-child(3) { border-right: none; }
-    .wx-stat:nth-child(4), .wx-stat:nth-child(5) { border-top: 1px solid var(--border); }
+    /* Weather: 2-col on mobile */
+    .wx-stats { grid-template-columns: repeat(2, 1fr); }
+    .wx-stat:nth-child(2) { border-right: none; }
+    .wx-stat:nth-child(3), .wx-stat:nth-child(4), .wx-stat:nth-child(5) { border-top: 1px solid var(--border); }
+    .wx-stat:nth-child(4) { border-right: none; }
 }
 @media (max-width: 480px) {
     .race-hero-name        { font-size: 15px; }

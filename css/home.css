@@ -349,9 +349,8 @@
         border-right: none;
         border-bottom: 1px solid var(--border);
     }
-    .htop-countdown { font-size: 19px; }
-}
-@media (max-width: 480px) {
+
+    /* Stack schedule + countdown vertically */
     .htop-next-body  { flex-direction: column; gap: 10px; }
     .htop-next-right {
         border-left: none;
@@ -361,6 +360,7 @@
         background: none;
         animation: none;
     }
+    .htop-countdown { font-size: 19px; }
 }
 
 /* Home: two equal scrollable columns */
