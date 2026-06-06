@@ -1,0 +1,209 @@
+/* ──────────────────────────────────────────────────────────
+   Mobile responsive overrides
+   Tablet/phone: ≤768px    Small phone: ≤480px
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+    /* ── Base: let page scroll naturally ──────── */
+    html, body { overflow: auto; }
+    .page { height: auto; min-height: 100dvh; }
+
+    /* ── Header ───────────────────────────────── */
+    .header { padding: 0 14px; gap: 8px; }
+    .logo-year  { display: none; }
+    .header-dev { display: none; }
+    .nav-btn { padding: 5px 14px; }
+
+    /* ── Home: unblock overflow chain ─────────── */
+    .home-layout { overflow: visible; }
+
+    .home-top { padding: 12px 14px; }
+    .htop-grid { grid-template-columns: 1fr; }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+        overflow: visible;
+    }
+    .home-col {
+        overflow-y: visible;
+        padding: 16px 14px;
+        gap: 16px;
+    }
+    .home-col:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Season: sidebar → horizontal top strip ── */
+    #page-season { flex-direction: column; }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 110px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+    }
+
+    .sidebar-header { padding: 8px 14px; }
+    .sidebar-year   { font-size: 10px; }
+
+    .calendar-list {
+        flex-direction: row;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 6px 10px 8px;
+        gap: 6px;
+    }
+
+    .cal-item {
+        flex-direction: column;
+        min-width: 60px;
+        max-width: 60px;
+        align-items: center;
+        text-align: center;
+        border-left: 3px solid transparent;
+        border-bottom: 2px solid transparent;
+        padding: 6px 4px;
+        border-radius: 6px;
+        gap: 3px;
+        flex-shrink: 0;
+    }
+
+    /* Re-wire state colours for horizontal layout */
+    .cal-item.is-active {
+        border-left-color: transparent;
+        border-bottom-color: var(--red);
+        background: var(--red-glow);
+    }
+    .cal-item.is-next   { border-left-color: transparent; border-bottom-color: var(--red); }
+    .cal-item.is-live   { border-left-color: transparent; border-bottom-color: var(--green); background: rgba(74,222,128,0.06); }
+
+    .cal-flag    { font-size: 20px; }
+    .cal-country { font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 58px; }
+    .cal-round   { font-size: 9px; }
+    .cal-meta    { display: none; }
+    .cal-badge-wrap { display: none; }
+
+    /* ── Main area ────────────────────────────── */
+    .main {
+        overflow-y: visible;
+        padding: 16px 14px;
+    }
+
+    /* ── Tabs bar: horizontal scroll ─────────── */
+    .race-tabs-bar { padding: 8px 12px; overflow-x: auto; white-space: nowrap; }
+    .tabs          { flex-wrap: nowrap; }
+    .tab           { white-space: nowrap; }
+
+    /* ── Race hero ────────────────────────────── */
+    .race-hero-content { padding: 16px; gap: 14px; }
+    .race-hero-name    { font-size: 17px; }
+    .race-hero-stats   { gap: 16px; flex-wrap: wrap; }
+    .race-hero-stat-val { font-size: 18px; }
+
+    /* ── Results table: hide gap column ──────── */
+    .result-table-head { padding: 8px 14px; gap: 10px; }
+    .result-row        { padding: 8px 14px; gap: 10px; }
+    .rth-gap, .result-gap { display: none; }
+    .rth-driver        { padding-left: 0; }
+
+    /* ── Standings ────────────────────────────── */
+    .standings-row { padding: 10px 14px; gap: 10px; }
+    .sdriver-photo { width: 44px; height: 44px; }
+    .steam-bar     { height: 42px; }
+
+    /* ── Podium ───────────────────────────────── */
+    .podium-wrap { padding: 16px 10px 0; gap: 4px; }
+    .podium-photo { width: 60px; height: 60px; }
+    .podium-p1 .podium-photo { width: 76px; height: 76px; }
+    .podium-name { font-size: 11px; }
+    .podium-p1 .podium-name { font-size: 13px; }
+    .podium-team { font-size: 10px; }
+
+    /* ── Card header ──────────────────────────── */
+    .card-header { padding: 12px 14px; flex-wrap: wrap; gap: 8px; }
+
+    /* ── Weather: 3-col summary ───────────────── */
+    .wx-stats { grid-template-columns: repeat(3, 1fr); }
+    .wx-stat:nth-child(3) { border-right: none; }
+    .wx-stat:nth-child(4), .wx-stat:nth-child(5) { border-top: 1px solid var(--border); }
+
+    /* ── Position chart: horizontal scroll ────── */
+    .pc-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px 10px 4px; }
+    .pc-wrap svg { min-width: 560px; }
+    .pc-hint { display: none; }
+
+    /* ── Tyre strategy ────────────────────────── */
+    .ts-row { padding: 5px 10px; }
+    .ts-legend-and-tabs { flex-wrap: wrap; gap: 8px; margin-left: 0; }
+    .ts-legend-and-tabs .session-sub-tabs { margin-left: 0; }
+    .ts-legend { gap: 8px; }
+
+    /* ── Sub-tabs ─────────────────────────────── */
+    .session-sub-tabs { margin-left: 0; }
+
+    /* ── Race tab content ─────────────────────── */
+    .race-tab-content { gap: 12px; margin-top: 12px; }
+
+    /* ── Next race countdown card ─────────────── */
+    .htop-countdown { font-size: 19px; }
+    .htop-next-right { padding: 8px 12px; }
+}
+
+/* ── Small phones (≤480px) ───────────────────── */
+@media (max-width: 480px) {
+
+    /* Header: tighten further */
+    .logo-text  { font-size: 12px; letter-spacing: 1px; }
+    .logo-badge { font-size: 11px; padding: 3px 7px; }
+    .nav-btn    { padding: 5px 10px; font-size: 11px; }
+
+    /* Next-race card: stack countdown below schedule */
+    .htop-next-body { flex-direction: column; gap: 10px; }
+    .htop-next-right {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 10px 0 0;
+        align-items: flex-start;
+        background: none;
+        animation: none;
+    }
+
+    /* Race hero tighter */
+    .race-hero-name        { font-size: 15px; }
+    .race-hero-winner-name { font-size: 14px; }
+    .race-hero-content     { padding: 14px; }
+
+    /* Standings: tighter */
+    .standings-row  { padding: 8px 12px; gap: 8px; }
+    .sdriver-photo  { width: 36px; height: 36px; }
+    .steam-bar      { height: 34px; }
+    .spoints        { font-size: 14px; }
+    .sdriver-initials { font-size: 11px; }
+
+    /* Weather table: drop last 2 cols */
+    .wx-table-head, .wx-row { grid-template-columns: 50px repeat(3, 1fr); }
+    .wx-row > :nth-child(5), .wx-row > :nth-child(6),
+    .wx-table-head > :nth-child(5), .wx-table-head > :nth-child(6) { display: none; }
+
+    /* Calendar strip: tighter */
+    .cal-item    { min-width: 54px; max-width: 54px; }
+    .cal-flag    { font-size: 17px; }
+    .cal-country { font-size: 9px; }
+
+    /* Card header: allow more wrapping */
+    .card-title { font-size: 9px; letter-spacing: 1.5px; }
+
+    /* Position chart table: smaller padding */
+    .pc-row  { padding: 5px 12px; }
+    .pc-name { font-size: 12px; }
+
+    /* Results: tighter */
+    .result-photo { width: 34px; height: 34px; }
+    .result-team-bar { height: 34px; }
+    .result-name  { font-size: 12px; }
+}
