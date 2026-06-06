@@ -1,0 +1,120 @@
+.header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--header-h);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    z-index: 200;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 4px 9px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.logo-text {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bbb;
+}
+
+/* Page nav (Home / Season) */
+.header-nav {
+    display: flex;
+    gap: 2px;
+    background: var(--border);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.nav-btn {
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+.nav-btn.is-active            { background: var(--surface); color: var(--text); }
+.nav-btn:hover:not(.is-active){ color: var(--text); }
+
+.logo-year {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+}
+
+.header-dev {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+    padding-right: 10px;
+    border-right: 1px solid var(--border);
+    margin-right: 3px;
+}
+
+.gear-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 17px;
+    cursor: pointer;
+    padding: 3px 7px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s;
+    font-family: inherit;
+}
+.gear-btn:hover { color: var(--text); background: var(--border); }
+
+/* Status dot states */
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--dim);
+    transition: background 0.3s;
+    flex-shrink: 0;
+}
+.status-dot.ready { background: var(--green); }
+.status-dot.idle  { background: var(--muted); }
+.status-dot.error { background: var(--red);   }
+.status-dot.live  {
+    background: var(--green);
+    animation: blink 1.8s ease-in-out infinite;
+}

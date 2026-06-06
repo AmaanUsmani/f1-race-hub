@@ -1,0 +1,18 @@
+# FastF1 disk cache — large pickle files, rebuilt automatically
+backend/cache/
+
+# Wallpapers — personal, add your own locally
+img/wallpapers/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Replay tool — has its own git repo, not part of the web deployment
+replay/
+
+# OS
+.DS_Store
+Thumbs.db

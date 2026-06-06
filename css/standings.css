@@ -1,0 +1,179 @@
+.standings-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.standings-round {
+    font-size: 11px;
+    color: var(--dim);
+}
+
+/* Each driver/constructor row */
+.standings-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 24px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+}
+
+.standings-row:last-child { border-bottom: none; }
+.standings-row:hover      { background: rgba(255,255,255,0.025); }
+
+.standings-row--p1 {
+    background: linear-gradient(90deg, rgba(255,215,0,0.05) 0%, transparent 55%);
+    border-left: 2px solid var(--gold);
+    padding-left: 22px;
+}
+
+.standings-row--p1:hover {
+    background: linear-gradient(90deg, rgba(255,215,0,0.08) 0%, rgba(255,255,255,0.02) 55%);
+}
+
+.standings-row--p1 .sdriver-photo {
+    box-shadow: 0 0 0 2px rgba(255,215,0,0.4);
+}
+
+.standings-row--p1 .spoints {
+    color: var(--gold);
+}
+
+/* Position number */
+.srank {
+    font-size: 13px;
+    font-weight: 800;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--muted);
+}
+
+.srank-gold   { color: #FFD700; }
+.srank-silver { color: #A8A8A8; }
+.srank-bronze { color: #CD7F32; }
+
+/* Thin vertical team color bar */
+.steam-bar {
+    width: 3px;
+    height: 50px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+/* Name / team / points bar block */
+.sinfo {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sname-row {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+}
+
+.sname {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scode {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--dim);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.steam-name {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* Proportional points bar */
+.sbar-wrap {
+    height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.sbar {
+    height: 100%;
+    border-radius: 1px;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Points + wins column */
+.sstat-group {
+    text-align: right;
+    flex-shrink: 0;
+    min-width: 48px;
+}
+
+.spoints {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+}
+
+.swins {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+.standings-empty {
+    padding: 32px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--dim);
+}
+
+/* Driver / team avatar circle */
+.sdriver-photo {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    background: var(--surface);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sdriver-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.sdriver-initials {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}

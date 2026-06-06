@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    volumes:
+      # Persistent cache — survives container restarts
+      - f1_cache:/app/cache
+    environment:
+      - PYTHONIOENCODING=utf-8
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    ports:
+      - "5500:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  f1_cache:
