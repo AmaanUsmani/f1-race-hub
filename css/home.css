@@ -332,35 +332,35 @@
 
 /* ── Mobile ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .home-layout { overflow: visible; }
-    .home-top    { padding: 12px 14px; }
-    .htop-grid   { grid-template-columns: 1fr; }
+    .home-layout { overflow: visible !important; }
+    .home-top    { padding: 12px 14px !important; }
+    .htop-grid   { grid-template-columns: 1fr !important; }
 
     .home-grid {
-        grid-template-columns: 1fr;
-        overflow: visible;
+        grid-template-columns: 1fr !important;
+        overflow: visible !important;
     }
     .home-col {
-        overflow-y: visible;
-        padding: 16px 14px;
-        gap: 16px;
+        overflow-y: visible !important;
+        padding: 16px 14px !important;
+        gap: 16px !important;
     }
     .home-col:first-child {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
     }
 
     /* Stack schedule + countdown vertically */
-    .htop-next-body  { flex-direction: column; gap: 10px; }
+    .htop-next-body  { flex-direction: column !important; gap: 10px !important; }
     .htop-next-right {
-        border-left: none;
-        border-top: 1px solid var(--border);
-        padding: 10px 0 0;
-        align-items: flex-start;
-        background: none;
-        animation: none;
+        border-left: none !important;
+        border-top: 1px solid var(--border) !important;
+        padding: 10px 0 0 !important;
+        align-items: flex-start !important;
+        background: none !important;
+        animation: none !important;
     }
-    .htop-countdown { font-size: 19px; }
+    .htop-countdown { font-size: 19px !important; }
 }
 
 /* Home: two equal scrollable columns */

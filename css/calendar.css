@@ -166,15 +166,15 @@
 
 /* ── Mobile: sidebar → horizontal strip ──────────────────────── */
 @media (max-width: 768px) {
-    #page-season { flex-direction: column; }
+    #page-season { flex-direction: column !important; }
 
     .sidebar {
-        width: 100%;
-        min-width: 0;
-        max-height: 110px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        overflow: hidden;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-height: 110px !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
+        overflow: hidden !important;
     }
     .sidebar-header { padding: 8px 14px; }
     .sidebar-year   { font-size: 10px; }

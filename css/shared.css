@@ -117,8 +117,8 @@
 
 /* ── Mobile ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .main { overflow-y: visible; padding: 16px 14px; }
-    .card-header { padding: 12px 14px; flex-wrap: wrap; gap: 8px; }
-    .tabs { flex-wrap: nowrap; }
-    .tab  { white-space: nowrap; }
+    .main { overflow-y: visible !important; padding: 16px 14px !important; }
+    .card-header { padding: 12px 14px !important; flex-wrap: wrap !important; gap: 8px !important; }
+    .tabs { flex-wrap: nowrap !important; }
+    .tab  { white-space: nowrap !important; }
 }

@@ -96,9 +96,10 @@ body.has-wallpaper {
 
 /* ── Mobile: unlock scrolling ────────────────────────────────── */
 @media (max-width: 768px) {
-    html, body { overflow: auto; height: auto; }
-    .page       { height: auto; min-height: 100vh; }
+    html, body { overflow: auto !important; height: auto !important; }
+    .page       { height: auto !important; min-height: 100vh; }
 }
+
 
 /* ── Settings modal ───────────────────────────────────────────── */
 #settings-modal {
