@@ -1070,8 +1070,9 @@ function renderTyreStrategy(stints, resultOrder, hasSprint, activeSub) {
             const laps     = Math.max(1, lapEnd - lapStart + 1);
             const pct      = (laps / totalLaps * 100).toFixed(2);
             const ageNote  = stint.tyre_age_at_start != null ? `, age ${stint.tyre_age_at_start}` : '';
+            const tip = `L${lapStart}–${lapEnd} · ${compound}${ageNote} (${laps} laps)`;
             return `<div class="ts-stint" style="width:${pct}%;background:${stintCol}"
-                         title="L${lapStart}–${lapEnd} · ${compound}${ageNote} (${laps} laps)"></div>`;
+                         title="${tip}" ontouchstart="showStintTip(event,'${tip}')"></div>`;
         }).join('');
 
         return `
@@ -1233,7 +1234,7 @@ function renderPositionChart(laps, pits = []) {
                     </svg>
                     Pit stop
                 </span>
-                <span class="pc-hint">Hover to see lap standings</span>
+                <span class="pc-hint" id="pc-hint-text">Hover to see lap standings</span>
             </div>
         </div>
         <div class="pc-wrap">
@@ -1352,14 +1353,24 @@ function initPositionChart(laps) {
             ${rows}`;
     }
 
-    overlay.addEventListener('mousemove', e => {
+    function lapFromClientX(clientX) {
         const rect = svg.getBoundingClientRect();
-        const mx   = (e.clientX - rect.left) / rect.width * VW;
-        const lap  = Math.max(1, Math.min(maxLap, Math.round(1 + (mx - PL) / CW * (maxLap - 1))));
-        showLap(lap);
+        const mx   = (clientX - rect.left) / rect.width * VW;
+        return Math.max(1, Math.min(maxLap, Math.round(1 + (mx - PL) / CW * (maxLap - 1))));
+    }
+
+    overlay.addEventListener('mousemove', e => showLap(lapFromClientX(e.clientX)));
+    overlay.addEventListener('mouseleave', () => {
+        hoverG.style.display = 'none';
+        svg.querySelectorAll('[id^="pc-dot-"]').forEach(el => el.style.display = 'none');
     });
 
-    overlay.addEventListener('mouseleave', () => {
+    overlay.addEventListener('touchmove', e => {
+        e.preventDefault();
+        showLap(lapFromClientX(e.touches[0].clientX));
+    }, { passive: false });
+
+    overlay.addEventListener('touchend', () => {
         hoverG.style.display = 'none';
         svg.querySelectorAll('[id^="pc-dot-"]').forEach(el => el.style.display = 'none');
     });

@@ -62,14 +62,14 @@
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--red);
+    border-top: 2px solid var(--accent);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, border-top-color 0.4s ease;
 }
 
 .card:hover {
-    box-shadow: 0 0 0 1px var(--border-soft), 0 8px 32px var(--red-glow);
+    box-shadow: 0 0 0 1px var(--border-soft), 0 8px 32px var(--accent-glow);
 }
 
 .card-header {

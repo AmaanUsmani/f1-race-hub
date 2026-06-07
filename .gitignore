@@ -1,9 +1,6 @@
 # FastF1 disk cache — large pickle files, rebuilt automatically
 backend/cache/
 
-# Wallpapers — personal, add your own locally
-img/wallpapers/
-
 # Python
 __pycache__/
 *.pyc

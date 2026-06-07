@@ -1298,9 +1298,9 @@
     .ts-legend-and-tabs .session-sub-tabs { margin-left: 0; }
     .session-sub-tabs   { margin-left: 0; }
 
-    /* Position chart: horizontal scroll */
+    /* Position chart: full-size scroll on mobile */
     .pc-wrap     { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px 10px 4px; }
-    .pc-wrap svg { min-width: 560px; }
+    .pc-wrap svg { width: 900px !important; min-width: 900px; }
     .pc-hint     { display: none; }
     .pc-row      { padding: 6px 12px; }
 

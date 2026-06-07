@@ -2,6 +2,24 @@
 let allMeetings      = [];
 let activeMeetingKey = null;
 
+// ── Stint tip (mobile touch tooltip) ───────────────────────────
+let _stintTipTimer = null;
+function showStintTip(e, text) {
+    e.preventDefault();
+    let tip = document.getElementById('stint-tip');
+    if (!tip) {
+        tip = document.createElement('div');
+        tip.id = 'stint-tip';
+        tip.style.cssText = 'position:fixed;bottom:44px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;z-index:500;white-space:nowrap;pointer-events:none;transition:opacity 0.2s;font-family:Inter,sans-serif;';
+        document.body.appendChild(tip);
+    }
+    tip.textContent = text;
+    tip.style.opacity = '1';
+    clearTimeout(_stintTipTimer);
+    _stintTipTimer = setTimeout(() => { tip.style.opacity = '0'; }, 2000);
+}
+
+
 // ── Boot ───────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', init);
 
@@ -180,23 +198,35 @@ function initWallpaper() {
 }
 
 function applyWallpaper(code) {
-    const layer = document.getElementById('wallpaper-layer');
-    // Try extensions in order; the backend told us which codes exist but not the extension
-    const exts = ['jpg', 'jpeg', 'png', 'webp'];
+    const layer  = document.getElementById('wallpaper-layer');
+    const mobile = window.innerWidth <= 768;
+    const exts   = ['jpg', 'jpeg', 'png', 'webp'];
+
+    // On mobile: try VER_mobile.{ext} first, then fall back to VER.{ext}
+    const candidates = mobile
+        ? [...exts.map(e => `${code}_mobile.${e}`), ...exts.map(e => `${code}.${e}`)]
+        : exts.map(e => `${code}.${e}`);
+
+    // Set team accent color
+    const color = DRIVER_ACCENT[code] || '#888888';
+    const r = parseInt(color.slice(1,3),16), g = parseInt(color.slice(3,5),16), b = parseInt(color.slice(5,7),16);
+    document.documentElement.style.setProperty('--accent', color);
+    document.documentElement.style.setProperty('--accent-glow', `rgba(${r},${g},${b},0.18)`);
+
     let loaded = false;
     function tryNext(i) {
-        if (i >= exts.length) return;
+        if (i >= candidates.length) return;
         const img = new Image();
         img.onload = () => {
             if (!loaded) {
                 loaded = true;
-                layer.style.backgroundImage = `url('img/wallpapers/${code}.${exts[i]}')`;
+                layer.style.backgroundImage = `url('img/wallpapers/${candidates[i]}')`;
                 layer.classList.add('active');
                 document.body.classList.add('has-wallpaper');
             }
         };
         img.onerror = () => tryNext(i + 1);
-        img.src = `img/wallpapers/${code}.${exts[i]}`;
+        img.src = `img/wallpapers/${candidates[i]}`;
     }
     tryNext(0);
 }
@@ -206,6 +236,8 @@ function removeWallpaper() {
     layer.style.backgroundImage = '';
     layer.classList.remove('active');
     document.body.classList.remove('has-wallpaper');
+    document.documentElement.style.setProperty('--accent', '#888888');
+    document.documentElement.style.setProperty('--accent-glow', 'rgba(136,136,136,0.12)');
 }
 
 // ── Settings modal ─────────────────────────────────────────────
@@ -213,7 +245,22 @@ let _availableWallpapers = [];
 
 async function openSettings() {
     if (!_availableWallpapers.length) {
-        try { _availableWallpapers = await getWallpapers(); } catch (e) { _availableWallpapers = []; }
+        const exts = ['jpg', 'jpeg', 'png', 'webp'];
+        const codes = Object.keys(DRIVER_IMAGES);
+        const results = await Promise.all(codes.map(code =>
+            new Promise(resolve => {
+                let i = 0;
+                function tryNext() {
+                    if (i >= exts.length) { resolve(null); return; }
+                    const img = new Image();
+                    img.onload  = () => resolve(code);
+                    img.onerror = () => { i++; tryNext(); };
+                    img.src = `img/wallpapers/${code}.${exts[i]}`;
+                }
+                tryNext();
+            })
+        ));
+        _availableWallpapers = results.filter(Boolean);
     }
     renderSettingsDriverGrid();
     document.getElementById('settings-modal').style.display = 'flex';

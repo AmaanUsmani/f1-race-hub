@@ -90,6 +90,21 @@ const TEAM_LOGOS = {
     'Williams':             'https://media.formula1.com/image/upload/c_lfill,w_96/q_auto/v1740000001/common/f1/2026/williams/2026williamslogowhite.webp',
 };
 
+// Driver → team accent color (for card borders when wallpaper is active)
+const DRIVER_ACCENT = {
+    VER: '#3671C6', HAD: '#3671C6',          // Red Bull
+    RUS: '#27F4D2', ANT: '#27F4D2',          // Mercedes
+    LEC: '#E8002D', HAM: '#E8002D',          // Ferrari
+    NOR: '#FF8000', PIA: '#FF8000',          // McLaren
+    ALO: '#229971', STR: '#229971',          // Aston Martin
+    GAS: '#FF87BC', COL: '#FF87BC',          // Alpine
+    ALB: '#64C4FF', SAI: '#64C4FF',          // Williams
+    OCO: '#B6BABD', BEA: '#B6BABD',          // Haas
+    HUL: '#52E252', BOR: '#52E252',          // Audi
+    LAW: '#6692FF', LIN: '#6692FF',          // Racing Bulls
+    BOT: '#CC0000', PER: '#CC0000',          // Cadillac
+};
+
 // Driver headshots from Formula1.com CDN — keyed by Jolpica 3-letter driver code
 const DRIVER_IMAGES = {
     ALB: 'https://media.formula1.com/image/upload/c_lfill,w_96/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/williams/alealb01/2026williamsalealb01right.webp',
